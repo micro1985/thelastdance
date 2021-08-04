@@ -14,13 +14,13 @@ pipeline {
         
         stage('Build') {
             steps {
-                sh 'echo "Stage 1"'
+                sh 'python sys.py'
             }
         }
         stage('Test') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh 'echo "Stage 2"'
+                    sh './test.sh index.html'
                 }
             }
         }
