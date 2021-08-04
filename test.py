@@ -1,6 +1,6 @@
 import sys
 
-w = "Hostname"
+w = "Hstname"
 file = open("./index.html","r")
 text = file.read()
 if w in text:
