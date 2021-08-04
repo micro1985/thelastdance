@@ -6,6 +6,6 @@ if [ "$res" == "Good" ]; then
   echo "Very Good"
   exit 0
 else
-  echo "Very Bad"
+  echo "Very Bad1"
   exit 1
 fi
