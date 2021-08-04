@@ -20,7 +20,7 @@ pipeline {
         stage('Test') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    sh 'ls -la'
+                    sh './test.sh index.html'
                 }
             }
         }
