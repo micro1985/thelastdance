@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'echo "Stage 3"'
+                sh 'cat ./index.html'
             }
         }
     }
