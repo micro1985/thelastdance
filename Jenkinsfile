@@ -35,11 +35,17 @@ pipeline {
           steps {
 	    withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS_Creds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
     		  sh '''
-		  terraform destroy -auto-approve
+		  echo "============================Testing============================="
+		  ls -la
 		  echo "Initialising Terraform"
                   terraform init
+		  echo "============================Testing============================="
+		  ls -la
+		  echo "============================Testing============================="
 		  echo "Planinging Terraform"
 		  terraform plan
+		  echo "============================Testing============================="
+		  ls -la
 		  '''
 		}
             }
