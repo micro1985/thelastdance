@@ -37,17 +37,10 @@ pipeline {
     		  sh '''
 		  echo "--------------------------Destroying Terraform--------------------------"
                   terraform destroy -auto-approve
-		  echo "============================Testing============================="
-		  ls -la
 		  echo "--------------------------Initialising Terraform------------------------"
                   terraform init
-		  echo "============================Testing============================="
-		  ls -la
-		  echo "============================Testing============================="
 		  echo "--------------------------Planinging Terraform------------------------"
 		  terraform plan
-		  echo "============================Testing============================="
-		  ls -la
 		  echo "--------------------------Applying Terraform--------------------------"
                   terraform apply -auto-approve
 		  '''
