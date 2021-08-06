@@ -37,9 +37,9 @@ pipeline {
                   terraform destroy -auto-approve
 		  echo "--------------------------Initialising Terraform------------------------"
                   terraform init
-		  echo "--------------------------Planinging Terraform------------------------"
+		  echo "--------------------------Planinging Terraform--------------------------"
 		  terraform plan
-		  echo "--------------------------Applying Terraform--------------------------"
+		  echo "--------------------------Applying Terraform----------------------------"
                   terraform apply -auto-approve
 		  '''
 		}
