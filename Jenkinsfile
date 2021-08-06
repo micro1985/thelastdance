@@ -26,9 +26,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
-                    sh 'python test.py'
-                }
+                sh 'python test.py'
             }
         }
         stage('Deploy') {
