@@ -10,8 +10,6 @@ pipeline {
         TF_HOME = tool('terraform')
         TF_IN_AUTOMATION = "true"
         PATH = "$TF_HOME:$PATH"
-	AWS_ACCESS_KEY_ID = "$AWS_ACCESS_KEY_ID"
-	AWS_SECRET_ACCESS_KEY = "$AWS_SECRET_ACCESS_KEY"
     }
 	
     stages {
@@ -34,15 +32,17 @@ pipeline {
             }
         }
         stage('Deploy') {
-            steps {
-                sh '''
-		echo "Initialising Terraform"
-                terraform init
-		export AWS_ACCESS_KEY_ID
-		export AWS_SECRET_ACCESS_KEY
-		echo "Planinging Terraform"
-		terraform plan
-		'''
+          steps {
+	    withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS_Creds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+    		  sh '''
+		  echo $AWS_ACCESS_KEY_ID
+		  echo $AWS_SECRET_ACCESS_KEY
+		  echo "Initialising Terraform"
+                  terraform init
+		  echo "Planinging Terraform"
+		  terraform plan
+		  '''
+		}
             }
         }
     }
