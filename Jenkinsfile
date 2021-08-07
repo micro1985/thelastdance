@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Deploy') {
           steps {
-	    withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS_Creds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+	    withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS_creds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
     		  sh '''
 		  echo "--------------------------Destroying Terraform---------------------------"
                   terraform destroy -auto-approve
