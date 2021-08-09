@@ -2,6 +2,10 @@ provider "aws" {
   region     = "eu-north-1"
 }
 
+resource "aws_eip" "my_elastic_ip" {
+  instance = aws_instance.myinstance.id
+}
+
 resource "aws_instance" "myinstance" {
   ami           = "ami-0d441f5643da997cb"
   instance_type = "t3.micro"
@@ -19,6 +23,10 @@ EOF
 
   tags = {
     Name = "MyInstance"
+  }
+  
+  lifecycle {
+    create_before_destroy = true
   }
 }
 
