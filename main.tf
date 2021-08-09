@@ -50,3 +50,7 @@ resource "aws_security_group" "allow_http" {
 data "local_file" "indx" {
     filename = "${path.module}/index.html"
 }
+
+output "server_public_ip" {
+  value = aws_instance.myinstance.public_ip
+}
