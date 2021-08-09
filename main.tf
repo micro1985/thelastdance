@@ -4,6 +4,10 @@ provider "aws" {
 
 resource "aws_eip" "my_elastic_ip" {
   instance = aws_instance.myinstance.id
+  
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "aws_instance" "myinstance" {
